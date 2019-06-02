@@ -1,0 +1,91 @@
+.header {
+  background: #2196f3;
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  .header-title {
+    padding: 1em;
+    font-size: 20px;
+  }
+}
+
+.form {
+    width: 100%;
+
+    .form-containers {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        
+        .form-container {
+            flex: 1;
+            padding: 1em;
+            
+            &:first-child {
+                border-right: 1px solid rgba(0, 0, 0, 0.075);
+            }
+            .form-container-title {
+                padding: 1em;
+                text-align: center;
+                font-size: 22px;
+                color: rgba(0,0,0,.4);
+            }
+
+            .form-section {
+                border-top: 1px solid rgba(0,0,0,.02);
+                display: flex;
+                flex-direction: column;
+                padding: 1em;
+                padding-top: 2em;
+
+                .form-section-title {
+                    padding: 1em;
+                    padding-top: 0;
+                    display: none;
+                }
+                .form-section-input {
+                    width: 100%;
+                    padding: 1em;
+
+                    &[input-index="2"] {
+                        flex: 1;
+                        padding: 0 !important;
+                    }
+                    &[input-index="3"] {
+                        flex: 0.2;
+                        margin-left: 2em;
+                        padding: 0 !important;
+                    }
+                    &[input-index="5"] {
+                        margin-bottom: 1em;
+                    }
+                }
+                .form-section-card {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 1em;
+                }
+            }
+        }
+    }
+    .form-button-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        padding: 1em;
+        background: #fff;
+        position: sticky;
+        bottom: 0;
+        border-top: 1px solid rgba(0,0,0,.02);
+
+        .form-button {
+            padding: 0.4em 0.7em;
+            color: #2196F3;
+            border-radius: 2px;
+            font-size: 15px;
+            margin-left: 0.5em;
+        }
+    }
+}
