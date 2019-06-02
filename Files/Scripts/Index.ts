@@ -137,9 +137,20 @@ function initialize() {
         $(e).after(input).remove()
     })
     $('.form-button').each(function(i, e) {
+        // Set handler
+       switch ($(e).attr('button-index')) {
+            case '1':
+                var handler = uploadData;
+                break;
+            case '2':
+                var handler = setDefault;
+                break;
+ 
+       }
+
         // Variables
         var buttonText = $(e).attr('button-text')
-        var button = $.button(buttonText, 'form-button', uploadData).ripple().attr({
+        var button = $.button(buttonText, 'form-button', handler).ripple().attr({
             float: "1-2-3"
         })
 
@@ -148,6 +159,67 @@ function initialize() {
     })
 }
 
+function parseInputsToData() {
+    // Variables
+    var data = {}
+
+    // Iterate each container (Player - Enemy)
+    $('.form-container').each(function(i, e) {
+        // Variables
+        var sections = $(e).find('.form-section')
+        var user = {
+            Cards: []
+        }
+
+        // First section
+        user['Username'] = sections.eq(0).children('[input-index="5"]').find('input').val()
+        user['KingLevel'] = sections.eq(0).children('[input-index="1"]').find('input').val()
+
+        // Second section
+        $(e).find('.form-section-card').each(function(i, e) {
+            // Variables
+            var cardName = $(e).children('[input-index="2"]').find('input').val()
+            var cardLevel = $(e).children('[input-index="3"]').find('input').val()
+
+            // Push card
+            if (cardName.trim() != '' && cardLevel.trim() != '') {
+                user.Cards.push({ 
+                    'CardName': cardName,
+                    'CardLevel': cardLevel,
+                })
+            }
+        })
+        
+        // Push data
+        if (i == 0)
+            data['Player'] = user
+        else
+            data['Enemy'] = user
+    })
+
+    return data
+}
+
 function uploadData() {
-    alert('hello world')
+    // Variables
+    var data = parseInputsToData();
+
+    console.log('Upload Data', data)
+}
+function setDefault() {
+    // Variables
+    var data = parseInputsToData();
+    
+    // Verbose
+    $.snackbar('Setting Default Info...')
+
+    // Ajax
+    $.ajax({
+        url: 'Files/Handlers/set-default.php',
+        crossDomain: true,
+        data: data,
+        complete: function(a, b) {
+            $.snackbar('Loading Finished')
+        }
+    })
 }

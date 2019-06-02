@@ -46,7 +46,7 @@
 }
 
 .form .form-containers .form-container .form-section {
-  border-top: 1px solid rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -54,8 +54,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: 2em;
   padding: 1em;
-  padding-top: 2em;
+  background: rgba(0, 0, 0, 0.01);
+  border-radius: 4px;
 }
 
 .form .form-containers .form-container .form-section .form-section-title {
@@ -112,7 +114,7 @@
   position: -webkit-sticky;
   position: sticky;
   bottom: 0;
-  border-top: 1px solid rgba(0, 0, 0, 0.02);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .form .form-button-wrapper .form-button {
