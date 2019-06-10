@@ -102,7 +102,7 @@ function start() {
     initialize();
 }
 function initialize() {
-    // Create inputs
+    $('.form-section').attr('float', '0-1-1')
     $('.form-section-input').each(function(i, e) {
         // Variables
         var inputType = $(e).attr('input-type')
@@ -214,12 +214,7 @@ function setDefault() {
     $.snackbar('Setting Default Info...')
 
     // Ajax
-    $.ajax({
-        url: 'Files/Handlers/set-default.php',
-        crossDomain: true,
-        data: data,
-        complete: function(a, b) {
-            $.snackbar('Loading Finished')
-        }
+    $.get('Files/Handlers/set-default.php', data['Player'], function(a, b) {
+        $.snackbar('Loading Finished')
     })
 }
